@@ -36,7 +36,7 @@ jobs:
           host: ${{ secrets.ECC_IP }}
           key: ${{ secrets.ECC_PEM }}
           source: "./docker-compose.yml"
-          target: "~/"
+          target: "~/docker-compose.yml"
 
 
       - name: Send docker-compose.yml
@@ -46,8 +46,8 @@ jobs:
           port: 22
           host: ${{ secrets.ECC_IP }}
           key: ${{ secrets.ECC_PEM }}
-          source: "./.env/app.env"
-          target: "~/.env/"
+          source: "./.env"
+          target: "~/.env"
 
 
       - name: Deploy to EC2 with Docker Compose
