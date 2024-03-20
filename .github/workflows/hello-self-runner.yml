@@ -45,8 +45,8 @@ jobs:
           port: 22
           host: ${{ secrets.ECC_IP }}
           key: ${{ secrets.ECC_PEM }}
-          source: "./.env"
-          target: "~/.env"
+          source: "./.env/app.env"
+          target: "~/.env/"
 
 
       - name: Deploy to EC2 with Docker Compose
