@@ -38,6 +38,7 @@ jobs:
           script: |
             echo ${{ secrets.DOCKER_PWD }} | docker login -u ${{ secrets.DOCKER_ID }} --password-stdin
             docker pull pll0123/backend:latest
+            cd ~
             docker compose down
             docker compose up -d
             docker container ls -a | grep 'Exited' | awk '{print $1}' | xargs docker container rm
