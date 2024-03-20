@@ -7,9 +7,6 @@ jobs:
       - self-hosted
 
     steps:
-      - name: printttt
-        run: "sdfsdddddddddddddddddddddddddddd"
-
       - name: set up jdk
         uses: actions/setup-java@v3
         with:
