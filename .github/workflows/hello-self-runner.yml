@@ -7,16 +7,10 @@ jobs:
       - self-hosted
 
     steps:
-      - name: set up jdk
-        uses: actions/setup-java@v3
-        with:
-          java-version: '21'
-          distribution: "adopt"
-
       - uses: actions/checkout@v3
 
       - name: gradle bootjar
           # 처음에 ./gradlew 파일을 실행할 수 없어서, chmod 로 실행 가능하도록 바꿔줍니다
         run: |
           chmod +x ./gradlew
-          ./gradlew bootjar
+          ./gradlew clean build
