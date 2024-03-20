@@ -49,7 +49,7 @@ jobs:
           target: "~/"
 
       - name: send dockerfile
-        uses: appleboy:scp-action@v0.1.3
+        uses: appleboy/scp-action@v0.1.3
         with:
           username: ubuntu
           port: 22
