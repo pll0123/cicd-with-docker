@@ -1,0 +1,17 @@
+name: hello-github-actions!
+on: [push]
+
+jobs:
+  build-and-push:
+    runs-on:
+      - self-hosted
+
+    steps:
+      - name: printttt
+        run: "sdfsdddddddddddddddddddddddddddd"
+
+      - name: set up jdk
+        uses: action/set-java@v3
+        with:
+          java-version: '21'
+
