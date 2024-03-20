@@ -15,6 +15,10 @@ jobs:
           chmod +x ./gradlew
           ./gradlew clean build
 
+      - name: create env
+        run: |
+          echo "${{ secrets.ENV }}" > ./.env/app.env
+
       - name: docker build
         run: |
           docker build -t pll0123/backend:latest .
