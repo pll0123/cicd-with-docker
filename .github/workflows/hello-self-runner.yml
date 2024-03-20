@@ -41,6 +41,6 @@ jobs:
             cd ~
             docker compose down
             docker compose up -d
-            docker container ls -a | grep 'Exited' | awk '{print $1}' | xargs docker container rm
+#            docker container ls -a | grep 'Exited' | awk '{print $1}' | xargs docker container rm
 #            docker container prune -f
 #            docker image prune -a -f
