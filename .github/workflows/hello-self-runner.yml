@@ -46,7 +46,7 @@ jobs:
           host: ${{ secrets.ECC_IP }}
           key: ${{ secrets.ECC_PEM }}
           source: "./.env/app.env"
-          target: "~/.env/"
+          target: "~/"
 
 
       - name: Deploy to EC2 with Docker Compose
