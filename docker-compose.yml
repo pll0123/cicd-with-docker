@@ -11,6 +11,11 @@ services:
       - database
     networks:
       - app-network
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [ node.role == worker ]
+
   database:
     image: "postgres:16.2-alpine3.19"
     ports:
@@ -19,6 +24,11 @@ services:
       - ./.env/app.env
     networks:
       - app-network
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [ node.role == worker ]
+
 networks:
   app-network:
     external: true
