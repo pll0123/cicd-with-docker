@@ -38,6 +38,7 @@ jobs:
           script: |
             echo ${{ secrets.DOCKER_PWD }} | docker login -u ${{ secrets.DOCKER_ID }} --password-stdin
             docker pull pll0123/backend:latest
+            scp -o StrictHostKeyChecking=no ./docker-compose.yml ubuntu@${{ secrets.ECC_IP }}:~/docker-compose.yml
             cd ~
             docker compose down
             docker compose up -d
