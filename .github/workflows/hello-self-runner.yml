@@ -28,6 +28,15 @@ jobs:
       - name: Push Docker image to Docker Hub
         run: docker push pll0123/backend:latest
 
+      - name: Send docker-compose.yml
+        uses: appleboy/scp-action@master
+        with:
+          username: ubuntu
+          host: ${{ secrets.ECC_IP }}
+          key: ${{ secrets.ECC_PWD }}
+          source: "./docker-compose.yml"
+          target: "~/"
+
       - name: Deploy to EC2 with Docker Compose
         uses: appleboy/ssh-action@master
         with:
@@ -38,7 +47,8 @@ jobs:
           script: |
             echo ${{ secrets.DOCKER_PWD }} | docker login -u ${{ secrets.DOCKER_ID }} --password-stdin
             docker pull pll0123/backend:latest
-            scp -o StrictHostKeyChecking=no -i ~/.ssh/cicd.pem ./docker-compose.yml ubuntu@${{ secrets.ECC_IP }}:~/docker-compose.yml
+#            scp -o StrictHostKeyChecking=no -i ~/.ssh/cicd.pem ./docker-compose.yml ubuntu@${{ secrets.ECC_IP }}:~/docker-compose.yml
+#            scp -o StrictHostKeyChecking=no -i ~/.ssh/cicd.pem ./docker-compose.yml ubuntu@${{ secrets.ECC_IP }}:~/docker-compose.yml
             cd ~
             sudo docker compose down
             sudo docker compose up -d
