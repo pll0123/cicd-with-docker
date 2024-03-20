@@ -11,7 +11,7 @@ jobs:
         run: "sdfsdddddddddddddddddddddddddddd"
 
       - name: set up jdk
-        uses: actions/set-java@v3
+        uses: actions/setup-java@v3
         with:
           java-version: '21'
 
