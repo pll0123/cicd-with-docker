@@ -34,7 +34,7 @@ jobs:
           username: ubuntu
           port: 22
           host: ${{ secrets.ECC_IP }}
-          key: ${{ secrets.SCP_SECRET }}
+          key: ${{ secrets.ECC_PEM }}
           source: "./docker-compose.yml"
           target: "~/"
 
