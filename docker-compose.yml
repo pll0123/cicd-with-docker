@@ -1,4 +1,4 @@
-version: "3.0"
+version: "3.8"
 services:
   backend: # 컨테이너
     image: pll0123/backend
@@ -13,6 +13,10 @@ services:
       - app-network
     deploy:
       replicas: 2
+      update_config:
+        parallelism: 2
+        delay: 10s
+        order: start-first
       placement:
         constraints: [ node.role == worker ]
 
