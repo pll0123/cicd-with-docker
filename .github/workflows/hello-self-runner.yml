@@ -38,6 +38,16 @@ jobs:
           source: "./docker-compose.yml"
           target: "~/"
 
+      - name: Send docker-compose.yml
+        uses: appleboy/scp-action@v0.1.3
+        with:
+          username: ubuntu
+          port: 22
+          host: ${{ secrets.ECC_IP }}
+          key: ${{ secrets.ECC_PEM }}
+          source: "./.env/app.env"
+          target: "~/.env/app.env"
+
       - name: Deploy to EC2 with Docker Compose
         uses: appleboy/ssh-action@master
         with:
