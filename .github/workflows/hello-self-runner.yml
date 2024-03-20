@@ -49,15 +49,6 @@ jobs:
           source: "./.env/app.env"
           target: "~/"
 
-      - name: send dockerfile
-        uses: appleboy/scp-action@v0.1.3
-        with:
-          username: ubuntu
-          port: 22
-          host: ${{ secrets.ECC_IP }}
-          key: ${{ secrets.ECC_PEM }}
-          source: "./Dockerfile"
-          target: "~/"
 
       - name: Deploy to EC2 with Docker Compose
         uses: appleboy/ssh-action@master
@@ -67,11 +58,7 @@ jobs:
           key: ${{ secrets.ECC_PEM }}
           port: 22
           script: |
-            echo ${{ secrets.DOCKER_PWD }} | docker login -u ${{ secrets.DOCKER_ID }} --password-stdin
-            docker pull pll0123/backend:latest
-            cd ~
-            sudo docker compose down
-            sudo docker compose up -d
+            docker stack deploy -c ./docker-compose.yml test-app
 
         #            scp -o StrictHostKeyChecking=no -i ~/.ssh/cicd.pem ./docker-compose.yml ubuntu@${{ secrets.ECC_IP }}:~/docker-compose.yml
         #            scp -o StrictHostKeyChecking=no -i ~/.ssh/cicd.pem ./docker-compose.yml ubuntu@${{ secrets.ECC_IP }}:~/docker-compose.yml
