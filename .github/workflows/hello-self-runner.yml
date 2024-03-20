@@ -19,6 +19,11 @@ jobs:
         run: |
           docker build -t pll0123:backend .
 
-#      - name: Login docker
-#        uses: docker/login-action@v1
-#        with:
+      - name: Login docker
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_ID }}
+          password: ${{ secrets.DOCKER_PWD }}
+
+      - name: Push Docker image to Docker Hub
+        run: docker push pll0123:backend
