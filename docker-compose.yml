@@ -1,7 +1,7 @@
 version: "3.0"
 services:
   backend: # 컨테이너
-    build: .
+    image: pll0123/backend
     ports:
       - '8080:8080'
     env_file:
