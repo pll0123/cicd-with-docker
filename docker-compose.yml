@@ -9,10 +9,16 @@ services:
     container_name: "backend"
     depends_on:
       - database
-
+    networks:
+      - my_overlay_network
   database:
     image: "postgres:16.2-alpine3.19"
     ports:
       - '5432:5432'
     env_file:
       - ./.env/app.env
+    networks:
+      - my_overlay_network
+networks:
+  my_overlay_network:
+    external: true
