@@ -40,6 +40,6 @@ jobs:
             docker pull pll0123/backend:latest
             docker compose down
             docker compose up -d
-#            docker container prune -f
             docker container ls -a | grep 'Exited' | awk '{print $1}' | xargs docker container rm
+#            docker container prune -f
 #            docker image prune -a -f
