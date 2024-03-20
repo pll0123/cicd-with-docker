@@ -10,7 +10,7 @@ services:
     depends_on:
       - database
     networks:
-      - my_overlay_network
+      - app-network
   database:
     image: "postgres:16.2-alpine3.19"
     ports:
@@ -18,7 +18,7 @@ services:
     env_file:
       - ./.env/app.env
     networks:
-      - my_overlay_network
+      - app-network
 networks:
-  my_overlay_network:
+  app-network:
     external: true
