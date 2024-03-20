@@ -47,11 +47,12 @@ jobs:
           script: |
             echo ${{ secrets.DOCKER_PWD }} | docker login -u ${{ secrets.DOCKER_ID }} --password-stdin
             docker pull pll0123/backend:latest
-#            scp -o StrictHostKeyChecking=no -i ~/.ssh/cicd.pem ./docker-compose.yml ubuntu@${{ secrets.ECC_IP }}:~/docker-compose.yml
-#            scp -o StrictHostKeyChecking=no -i ~/.ssh/cicd.pem ./docker-compose.yml ubuntu@${{ secrets.ECC_IP }}:~/docker-compose.yml
             cd ~
             sudo docker compose down
             sudo docker compose up -d
+
+        #            scp -o StrictHostKeyChecking=no -i ~/.ssh/cicd.pem ./docker-compose.yml ubuntu@${{ secrets.ECC_IP }}:~/docker-compose.yml
+        #            scp -o StrictHostKeyChecking=no -i ~/.ssh/cicd.pem ./docker-compose.yml ubuntu@${{ secrets.ECC_IP }}:~/docker-compose.yml
 #            docker container ls -a | grep 'Exited' | awk '{print $1}' | xargs docker container rm
 #            docker container prune -f
 #            docker image prune -a -f
