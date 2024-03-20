@@ -36,8 +36,7 @@ jobs:
           host: ${{ secrets.ECC_IP }}
           key: ${{ secrets.ECC_PEM }}
           source: "./docker-compose.yml"
-          target: "~/docker-compose.yml"
-
+          target: "~/"
 
       - name: Send docker-compose.yml
         uses: appleboy/scp-action@v0.1.3
